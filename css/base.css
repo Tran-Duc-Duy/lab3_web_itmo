@@ -127,7 +127,7 @@ input{
     color: #47d864;
   }
   
-  /* .toast--info {
+  .toast--info {
     border-color: #2f86eb;
   }
   
@@ -150,7 +150,7 @@ input{
   .toast--error .toast__icon {
     color: #ff623d;
   }
-   */
+  
   .toast + .toast {
     margin-top: 24px;
   }

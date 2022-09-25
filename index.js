@@ -1,4 +1,4 @@
-var cout = 2;
+var count = 2;
 function addTable() {
     var check = document.getElementById("my_table");
     if (check !== null) {
@@ -41,17 +41,17 @@ function addTable() {
 
     document.getElementById("btn1").disabled = false;
     document.getElementById("btn2").disabled = false;
-
+    showAddTableSuccessToast();
 }
 
 function addRow() {
-    cout++;
+    count++;
     var table = document.getElementById("my_table");
     var mess = document.getElementById("mess");
     var row = table.insertRow(-1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
-    cell1.innerHTML = "" + cout;
+    cell1.innerHTML = "" + count;
     cell2.innerHTML = mess.value;
     mess.value = "";
     showAddSuccessToast();
@@ -66,12 +66,14 @@ function deleteRow() {
         return;
     }
     var length = table.rows.length;
-    if (num > length) {
+    if (num >= length) {
+        document.getElementById("num").value = "";
         showErrorToast();
+        return;
     }
     table.deleteRow(num);
     document.getElementById("num").value = "";
-
+    var length = table.rows.length;
     if (length === 1) {
         document.getElementById("btn1").disabled = true;
         document.getElementById("btn2").disabled = true;
@@ -82,8 +84,18 @@ function deleteRow() {
         table.rows[i].cells[0].innerHTML = "" + i;
     }
     showDeleteSuccessToast();
+    count--;
 }
 
+
+function showAddTableSuccessToast() {
+    toast({
+        title: "Sucess",
+        message: "Add table successfully.",
+        type: "success",
+        duration: 1000
+    });
+}
 
 function showDeleteSuccessToast() {
     toast({
@@ -93,6 +105,7 @@ function showDeleteSuccessToast() {
         duration: 1000
     });
 }
+
 function showAddSuccessToast() {
     toast({
         title: "Sucessfully!",
@@ -107,9 +120,10 @@ function showErrorToast() {
         title: "Failed!",
         message: "Row number is not exist.",
         type: "error",
-        duration: 1000
+        duration: 2000
     });
 }
+// Toast function
 function toast({ title = "", message = "", type = "info", duration = 3000 }) {
     const main = document.getElementById("toast");
     if (main) {
