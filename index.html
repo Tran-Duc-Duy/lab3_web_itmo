@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/base.css" />
+        <title>Lab 3</title>
+    </head>
+    <body>
+        <div id="toast"></div>
+        <div id="root">
+            <button onclick="addTable()">Add Table</button>
+            <div>
+                <input type="text" id="mess" placeholder="Add a message" />
+            </div>
+            <button id="btn1" onclick="addRow()" onsubmit="addRow()" disabled>
+                Add Row
+            </button>
+            <div>
+                <input
+                    type="text"
+                    id="num"
+                    placeholder="Which line do you want to delete?"
+                />
+            </div>
+            <button id="btn2" onclick="deleteRow()" disabled>Delete Row</button>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
